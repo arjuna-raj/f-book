@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <h1>FBOOK</h1>
+  </div>
+  <div *ngIf="!currentUser" class="row">
+      <a class="routes float-right" routerLink="/register">Register</a>
+      <a class="routes float-right" routerLink="/login">Login</a>
+  </div>
+  
+
+</div>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+  <div class="navbar-nav">
+      <a class="routes float-right" routerLink="/">Home</a>
+      <a class="routes float-right" *ngIf="isAdmin" routerLink="/userlist">Users</a>
+      <a class="routes float-right" routerLink="/network">Network</a>
+      <a class="routes float-right" routerLink="/friends">Friends</a>
+      <a class="routes float-right" routerLink="/settings">Settings</a>
+      <a class="routes float-right" (click)="logout()">Logout</a>
+  </div>
+</nav>
+
+<div class="container" margin:auto>
+  <div>
+    <app-alert></app-alert>       
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
