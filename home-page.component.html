@@ -1,0 +1,30 @@
+<h1>Hi {{currentUser.firstName}}...welcome to Friends Book!</h1>
+<p>You're logged In!!!</p>
+
+<div class="container col-xs-12 col-sm-12 col-md-12 col-lg-12 row">
+    <form [formGroup]="homeForm" (ngSubmit)="onSubmit()">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <app-shared></app-shared>
+    </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+        <div class="row">
+            <textarea ng-model="post" name="post" id="post" formControlName="post" class="form-control"
+                style="width: 75%;padding-bottom: 10px;"></textarea>
+                <button    style="float: right;">Post</button>
+               <input style="display: none" type="file" (change)="onPostImage($event)" #imageInput>
+                <button class="postImageBtn" (click)="imageInput.click()">Post A Image</button>
+
+
+        </div>
+        <ul>
+            <li *ngFor="let post of sortPosts">
+                <b>{{post.userName}}</b> {{post.post}} <img id="myimage" *ngIf="post.postImage"
+                    style="height: 150px; width: 150px;" [src]='post.postImage' />
+            </li>
+        </ul>
+    </div>
+    </form>
+
+
+    
+</div>
